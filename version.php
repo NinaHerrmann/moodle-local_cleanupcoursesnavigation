@@ -24,7 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version  = 2016031703;
+$plugin->version  = 2018032000;
 $plugin->component = 'local_cleanupcoursesnavigation';
 $plugin->requires  = 2015111600.00; // 3.0 (Build: 20151116).
 $plugin->dependencies = array(
