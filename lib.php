@@ -30,7 +30,7 @@ function local_cleanupcoursesnavigation_extend_navigation($navigation) {
         $url = new moodle_url('/admin/tool/cleanupcourses/view.php');
         $subsnode = navigation_node::create(get_string('managecourses', 'local_cleanupcoursesnavigation'), $url,
             navigation_node::TYPE_SETTING, null, 'cleanupcourses', new pix_icon('i/settings', ''));
-        $subsnode->make_active();
+
         if (!empty($navigation)) {
             // Show in flat navigation themes.
             $subsnode->showinflatnavigation = true;
