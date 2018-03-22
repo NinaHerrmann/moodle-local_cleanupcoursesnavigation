@@ -70,7 +70,7 @@ jobs:
       - moodle-plugin-ci validate
 
 install:
-  - moodle-plugin-ci add-plugin --branch feature/manualtrigger learnweb/moodle-tool_cleanupcourses
+  - moodle-plugin-ci add-plugin --branch feature/manueltrigger learnweb/moodle-tool_cleanupcourses
   - moodle-plugin-ci install
 
 # Unit tests and behat tests against full matrix.
