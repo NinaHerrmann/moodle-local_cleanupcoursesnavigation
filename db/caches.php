@@ -15,16 +15,16 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * English strings for local_cleanupcoursesnavigation
- *
  * @package    local_cleanupcoursesnavigation
  * @copyright  2018 Tobias Reischmann, Nina Herrmann WWU
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'Navigation for admin tool cleanupcourses';
-$string['plugintitle'] = 'Navigation for admin tool cleanupcourses';
-
-$string['managecourses'] = 'Manage courses';
-$string['cachedef_coursesmanaged'] = 'The cache caches an array of courses where the current user has the capability tool/cleanupcourses:managecourses.';
+// For values for default settings look at https://docs.moodle.org/dev/Cache_API#Ad-hoc_Caches.
+$definitions = array(
+    'coursesmanaged' => array(
+        'mode' => cache_store::MODE_SESSION,
+        'simplekeys' => true)
+);

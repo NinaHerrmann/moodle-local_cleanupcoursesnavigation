@@ -22,11 +22,17 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * Adds a navigation node to the menu in case the logged in user has a course with tool/cleanupcourses:managecourses
+ * capabilities
+ * @param $navigation
+ * @throws coding_exception
+ * @throws moodle_exception
+ */
 function local_cleanupcoursesnavigation_extend_navigation($navigation) {
-    global $USER;
-    $courses = get_user_capability_course('tool/cleanupcourses:managecourses', $USER->id, false);
+    $courses = get_managedcourses();
     // In case a user has no courses it is not shown in the navigation block.
-    if (!empty($courses)) {
+    if ($courses === 'yes') {
         $url = new moodle_url('/admin/tool/cleanupcourses/view.php');
         $subsnode = navigation_node::create(get_string('managecourses', 'local_cleanupcoursesnavigation'), $url,
             navigation_node::TYPE_SETTING, null, 'cleanupcourses', new pix_icon('i/settings', ''));
@@ -37,4 +43,27 @@ function local_cleanupcoursesnavigation_extend_navigation($navigation) {
             $navigation->add_node($subsnode);
         }
     }
+}
+
+/**
+ * Looks whether managedcourses are cached and returns an array of managed courses.
+ * @return array|bool
+ */
+function get_managedcourses() {
+    global $USER;
+    $cache = cache::make('local_cleanupcoursesnavigation', 'coursesmanaged');
+    $cachedcourses = $cache->get(0);
+
+    if ($cachedcourses === false) {
+        $cachedcourses = get_user_capability_course('tool/cleanupcourses:managecourses', $USER->id, false);
+        // No course with capabilities.
+        if ($cachedcourses === false) {
+            $cache->set(0, 'no');
+        } else {
+            $cache->set(0, 'yes');
+        }
+        $cachedcourses = $cache->get(0);
+
+    }
+    return $cachedcourses;
 }
