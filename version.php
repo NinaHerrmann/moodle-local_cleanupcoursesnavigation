@@ -18,16 +18,16 @@
  * Version details.
  *
  * @package    local
- * @subpackage cleanupcourses_navigation
+ * @subpackage lifecycle_navigation
  * @copyright  2018 Tobias Reischmann, Nina Herrmann WWU
  */
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version  = 2018032205;
-$plugin->component = 'local_cleanupcoursesnavigation';
-// TODO adjust to cleanupcourses.
+$plugin->version  = 2018040700;
+$plugin->component = 'local_lifecyclenavigation';
+// TODO adjust to lifecycle.
 $plugin->requires  = 2015111600.00;
 $plugin->dependencies = array(
-    'tool_cleanupcourses' => ANY_VERSION
+    'tool_lifecycle' => ANY_VERSION
 );

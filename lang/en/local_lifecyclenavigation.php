@@ -15,16 +15,16 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package    local_cleanupcoursesnavigation
+ * English strings for local_lifecyclenavigation
+ *
+ * @package    local_lifecyclenavigation
  * @copyright  2018 Tobias Reischmann, Nina Herrmann WWU
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 defined('MOODLE_INTERNAL') || die();
 
-// For values for default settings look at https://docs.moodle.org/dev/Cache_API#Ad-hoc_Caches.
-$definitions = array(
-    'coursesmanaged' => array(
-        'mode' => cache_store::MODE_SESSION,
-        'simplekeys' => true)
-);
+$string['pluginname'] = 'Navigation for admin tool lifecycle';
+$string['plugintitle'] = 'Navigation for admin tool lifecycle';
+
+$string['managecourses'] = 'Manage courses';
+$string['cachedef_coursesmanaged'] = 'The cache caches an array of courses where the current user has the capability tool/lifecycle:managecourses.';
